@@ -38,9 +38,9 @@ pub fn read_and_count_parallel(params: &HashMap<&str, &str>) -> HashMap<Vec<u8>,
     }
 
     let common_kmers = get_common_kmers(&kmer_count);
-    for kmer in &common_kmers {
-        println!("{}", str::from_utf8(kmer).unwrap());
-    }
+    //for kmer in &common_kmers {
+    //    println!("{}", str::from_utf8(kmer).unwrap());
+    //}
 
     let extracted = extract_common_kmers(kmer_count, &common_kmers);
     extracted

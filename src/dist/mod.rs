@@ -8,7 +8,12 @@ fn l1_norm(v1: &Vec<usize>, v2: &Vec<usize>) -> f32 {
     for i in 0..v1.len() {
         sum += (v1[i] as f32 - v2[i] as f32).abs();
     }
-    sum
+    // logarithm of sum if sum is not 0
+    if sum != 0.0 {
+        sum.log2()
+    } else {
+        0.0
+    }
 }
 
 pub fn build_condensed_distance_matrix(target:&HashMap<Vec<u8>, Vec<usize>>) -> (Vec<Vec<u8>>, Vec<f32>) {
