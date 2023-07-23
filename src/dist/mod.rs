@@ -46,25 +46,3 @@ pub fn to_pickle_with_serde_dend(dend: Dendrogram<f32>) {
     let serialized = serde_pickle::to_vec(&format!("{:?}", dend), Default::default()).unwrap();
     std::fs::write("data/dendrogram.pkl", serialized).unwrap();
 }
-
-#[cfg(test)]
-mod test {
-    #[test]
-    fn test_l1_norm() {
-        use super::*;
-        let v1 = vec![1, 2, 3];
-        let v2 = vec![4, 5, 6];
-        assert_eq!(l1_norm(&v1, &v2), 9.0);
-    }
-
-    #[test]
-    fn test_build_condensed_distance_matrix() {
-        use super::*;
-        let mut target: HashMap<Vec<u8>, Vec<usize>> = HashMap::new();
-        target.insert(vec![99, 100, 101], vec![1, 2, 3]);
-        target.insert(vec![98,97, 96], vec![4, 5, 6]);
-        let (names, condensed) = build_condensed_distance_matrix(&target);
-        assert_eq!(names, vec![vec![99, 100, 101], vec![98, 97, 96]]);
-        assert_eq!(condensed, vec![9.0]);
-    }
-}

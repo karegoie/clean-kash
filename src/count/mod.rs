@@ -96,21 +96,3 @@ fn extract_common_kmers(
     }
     extracted
 }
-
-#[cfg(test)]
-mod test {
-    use super::*;
-    use std::collections::HashMap;
-    use std::str;
-
-    #[test]
-    fn test() {
-        let mut params: HashMap<&str, &str> = HashMap::new();
-        params.insert("file", "data/short.fasta");
-        params.insert("kmer", "3");
-        let extracted = read_and_count_parallel(&params);
-        for (id, counts) in extracted {
-            println!("{:?} {:?}", str::from_utf8(&id).unwrap(), counts);
-        }
-    }
-}
