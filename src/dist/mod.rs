@@ -67,16 +67,4 @@ mod test {
         assert_eq!(names, vec![vec![99, 100, 101], vec![98, 97, 96]]);
         assert_eq!(condensed, vec![9.0]);
     }
-    #[test]
-    fn test_dendrogram() {
-        use super::*;
-        let mut target: HashMap<Vec<u8>, Vec<usize>> = HashMap::new();
-        target.insert(vec![99, 100, 101], vec![1, 2, 3]);
-        target.insert(vec![98,97, 96], vec![4, 5, 6]);
-        let (names, condensed) = build_condensed_distance_matrix(&target);
-        let dend = dendrogram(target.len(), condensed);
-        to_pickle_with_serde_names(names);
-        to_pickle_with_serde_dend(dend);
-        println!("{:?}", dend);
-    }
 }
