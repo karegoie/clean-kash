@@ -5,7 +5,7 @@ fn main() {
 #[cfg(test)]
 mod test {
     #[test]
-    fn test_total() {
+    fn test_cluster() {
         use clean_kash::count;
         use clean_kash::dist;
         use std::collections::HashMap;
